@@ -1,0 +1,20 @@
+<configuration>
+
+  <!--2.  By the way, setting debug="true" is strictly equivalent to installing an OnConsoleStatusListener. -->
+<!--   <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />   -->
+
+  <!--  a configuration file equivalent to the one established by "BasicConfigurator" (SPI impl) -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+  </root>
+  
+  <shutdownHook/>
+</configuration>

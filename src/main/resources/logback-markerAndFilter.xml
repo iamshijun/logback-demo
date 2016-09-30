@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Test with class: chapters.configuration.MarkerTest -->
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<name>ProfileMarkerFilter</name> <!-- 当前filter的名称 -->
+		<marker>ProfileMarker</marker> <!-- marker的名称 -->
+		<onMatch>DENY</onMatch> <!--deny logging evnet with marker named profileMakrer; ps. FilterReply: ACCEPT , DENY , NEUTRAL -->
+	</turboFilter>
+	
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
+            

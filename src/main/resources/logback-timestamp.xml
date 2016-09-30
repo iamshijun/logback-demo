@@ -1,0 +1,20 @@
+<configuration>
+	<!-- Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 
+		key "bySecond" into the logger context. This value will be available to all 
+		subsequent configuration elements.
+		 这里的时间是当下面的appender的file值被解析的时间 	如果加上 timeReference="contextBirth"的话这个时间就是loggercontext的birth data作为这里的时间-->
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" /> <!-- timeReference="contextBirth" -->
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<!-- use the previously created timestamp to create a uniquely named log 
+			file -->
+		<file>log-${bySecond}.txt</file>
+		<encoder>
+			<pattern>%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
